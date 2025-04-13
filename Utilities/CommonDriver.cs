@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium;
 
-namespace qa_automation_mars.StepDefinition
+namespace qa_automation_mars.Utilities
 {
-    internal class LoginSteps
+    public class CommonDriver
     {
+        public static IWebDriver driver;
     }
 }
