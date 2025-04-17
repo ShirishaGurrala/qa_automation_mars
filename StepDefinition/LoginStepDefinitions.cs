@@ -31,16 +31,20 @@ namespace qa_automation_mars.StepDefinition
         {
             LoginPage loginPage = new LoginPage();  
             loginPage.LoginActions(driver, email, password);
-            Thread.Sleep(1000);
+             Thread.Sleep(1000);
         }
 
         [Then("I should see the profile page")]
         public void ThenIShouldSeeTheProfilePage()
         {
+            Languages languages = new Languages();
+            languages.addLanguages(driver);
+            languages.editLanguage(driver);
+            languages.deleteLanguage(driver);
 
             Console.WriteLine(driver.Title);
             Assert.That(driver.Title.Equals("Profile"), "Logged on to Profile page");
-        }
+                    }
 
         [When("I enter an invalid email and valid password {string} and {string}")]
         public void WhenIEnterAnInvalidEmailAndValidPasswordAnd(string email, string password)
