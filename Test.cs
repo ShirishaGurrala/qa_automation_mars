@@ -18,7 +18,7 @@ namespace qa_automation_mars
         public void SetUpSteps()
         {
             // Open Chrome Browser
-            driver = new ChromeDriver();
+            //driver = new ChromeDriver();
          }
         [Test]
         public void Login_Test()

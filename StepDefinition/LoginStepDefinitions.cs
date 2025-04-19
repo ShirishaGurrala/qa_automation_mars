@@ -37,11 +37,7 @@ namespace qa_automation_mars.StepDefinition
         [Then("I should see the profile page")]
         public void ThenIShouldSeeTheProfilePage()
         {
-            Languages languages = new Languages();
-            languages.addLanguages(driver);
-            languages.editLanguage(driver);
-            languages.deleteLanguage(driver);
-
+            
             Console.WriteLine(driver.Title);
             Assert.That(driver.Title.Equals("Profile"), "Logged on to Profile page");
                     }
@@ -67,6 +63,12 @@ namespace qa_automation_mars.StepDefinition
             LoginPage loginPage = new LoginPage();
             loginPage.LoginActions(driver, email, password);
             Thread.Sleep(1000);
+        }
+        [AfterScenario]
+        public void CloseTestRun()
+        {
+            driver.Quit();
+
         }
 
     }
