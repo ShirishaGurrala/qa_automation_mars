@@ -31,7 +31,8 @@ namespace qa_automation_mars.StepDefinition
         {
             LoginPage loginPage = new LoginPage();  
             loginPage.LoginActions(driver, email, password);
-             Thread.Sleep(1000);
+            Thread.Sleep(1000);
+                     
         }
 
         [Then("I should see the profile page")]

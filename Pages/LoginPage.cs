@@ -28,5 +28,11 @@ namespace qa_automation_mars.Pages
 
         }
 
+        public void navigateToSkillsTab(IWebDriver driver)
+        {
+             IWebElement skillsTab = driver.FindElement(By.XPath("//a[text()=\"Skills\"]"));
+            skillsTab.Click();
+        }
+
     }
 }
