@@ -10,13 +10,7 @@ namespace qa_automation_mars.StepDefinition
     [Binding]
     public class LanguageStepDefinitions : CommonDriver
     {
-        [BeforeScenario]
-        public void Setup()
-        {
-            driver = new ChromeDriver();
-        }
-
-            
+                  
         [Given("I logged into mars application successfully {string} and {string}")]
         public void GivenILoggedIntoMarsApplicationSuccessfullyAnd(string email, string password)
         {
@@ -31,7 +25,9 @@ namespace qa_automation_mars.StepDefinition
         public void WhenIAddANewLanguageAnd(string languageValue, string levelValue)
         {
             Languages languages = new Languages();
+            languages.clearData(driver);
             languages.addLanguages(driver, languageValue, levelValue);
+
         }
 
         [Then("New language should be successfully created {string}")]
@@ -44,10 +40,12 @@ namespace qa_automation_mars.StepDefinition
         }
 
 
-        [When("I update an existing language {string} and {string}")]
-        public void WhenIUpdateAnExistingLanguageAnd(string languageValue, string levelValue)
+        [When("I update an existing language {string} and {string} and {string}")]
+        public void WhenIUpdateAnExistingLanguageAnd(string languageValue, string levelValue, string languageValueOne)
         {
             Languages languages = new Languages();
+            languages.clearData(driver);
+            languages.addLanguages(driver, languageValueOne, levelValue);
             languages.editLanguage(driver, languageValue, levelValue);
         }
 
@@ -172,12 +170,5 @@ namespace qa_automation_mars.StepDefinition
 
         }
 
-
-        [AfterScenario]
-        public void CloseTestRun()
-        {
-            driver.Quit();
-
-        }
     }
 }

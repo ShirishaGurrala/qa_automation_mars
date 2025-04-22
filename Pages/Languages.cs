@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework.Internal;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using qa_automation_mars.Utilities;
 using SeleniumExtras.WaitHelpers;
 
 
@@ -76,47 +77,33 @@ namespace qa_automation_mars.Pages
 
         public string removeSuccessMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement errorMessage = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'has been deleted from your languages')]")
-            ));
-            return errorMessage.Text;
+            string errorMessage = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'has been deleted from your languages')]");
+            return errorMessage;
         }
 
         public string duplicateDataMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement duplicateDataMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'Duplicated data')]")
-            ));
-            return duplicateDataMsg.Text;
+           string duplicateDataMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'Duplicated data')]");
+            return duplicateDataMsg;
         }
 
         public string languageExistErrorMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement languageExistErrorMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'This language is already exist in your language list.')]")
-            ));
-            return languageExistErrorMsg.Text;
+            string languageExistErrorMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'This language is already exist in your language list.')]");
+            return languageExistErrorMsg;
         }
 
         public string emptyLanguageErrorMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement emptyLanguageErrorMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'Please enter language and level')]")
-            ));
-            return emptyLanguageErrorMsg.Text;
+            string emptyLanguageErrorMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'Please enter language and level')]");
+           return emptyLanguageErrorMsg;
         }
 
         public string emptyLanguageLevelErrorMsg(IWebDriver driver)
         {
+           string emptyLanguageLevelErrorMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'Please enter language and level')]");
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement emptyLanguageLevelErrorMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'Please enter language and level')]")
-            ));
-            return emptyLanguageLevelErrorMsg.Text;
+           return emptyLanguageLevelErrorMsg;
         }
 
         public int addNewButtonPresent(IWebDriver driver)

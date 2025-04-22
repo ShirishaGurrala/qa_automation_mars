@@ -11,13 +11,6 @@ namespace qa_automation_mars.StepDefinition
     public class LoginStepDefinitions : CommonDriver
     {
 
-        [BeforeScenario]
-        public void Setup()
-        {
-            driver = new ChromeDriver();
-        }
-
-
         [Given("I am on the application main page, click on sign in to navigate to login page")]
         public void NavigateToLoginPage()
         {
@@ -65,12 +58,6 @@ namespace qa_automation_mars.StepDefinition
             loginPage.LoginActions(driver, email, password);
             Thread.Sleep(1000);
         }
-        [AfterScenario]
-        public void CloseTestRun()
-        {
-            driver.Quit();
-
-        }
-
+       
     }
 }

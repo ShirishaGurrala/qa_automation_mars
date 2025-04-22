@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
+using qa_automation_mars.Utilities;
 
 namespace qa_automation_mars.Pages
 {
     public class Skills
     {
-        public void addSkills(IWebDriver driver, String languageValue, String levelValue)
+        public void addSkills(IWebDriver driver, String skillValue, String skilllLevelValue)
         {
             IWebElement addNew = driver.FindElement(By.XPath("//th[text()='Skill']/ancestor::table//div[text()='Add New']"));
             addNew.Click();
             IWebElement addSkillText = driver.FindElement(By.XPath("//div/input[@placeholder='Add Skill']"));
-            addSkillText.SendKeys(languageValue);
+            addSkillText.SendKeys(skillValue);
             SelectElement chooseSkillLevel = new SelectElement(driver.FindElement(By.XPath("//option[text()=\"Choose Skill Level\"]/ancestor::select")));
-            chooseSkillLevel.SelectByText(levelValue);
+            chooseSkillLevel.SelectByText(skilllLevelValue);
             IWebElement add = driver.FindElement(By.XPath("//div/input[@placeholder='Add Skill']/ancestor::div//input[@value='Add']"));
             add.Click();
             Thread.Sleep(2000);
         }
-        public void editSkill(IWebDriver driver, string languageValue, string levelValue)
+        public void editSkill(IWebDriver driver, string skillValue, string skilllLevelValue)
         {
 
             // //th[text()='Language']/ancestor::table//tbody[last()]//tr/td
@@ -36,9 +37,9 @@ namespace qa_automation_mars.Pages
 
             IWebElement addSkillText = driver.FindElement(By.XPath($"//div/input[@placeholder='Add Skill' and @value='{lastSkillValue}']"));
             addSkillText.Clear();
-            addSkillText.SendKeys(languageValue);
+            addSkillText.SendKeys(skillValue);
             SelectElement chooseSkillLeveltwo = new SelectElement(driver.FindElement(By.XPath($"//input[@placeholder=\"Add Skill\" and @value=\"{lastSkillValue}\"]/ancestor::td//select")));
-            chooseSkillLeveltwo.SelectByText(levelValue);
+            chooseSkillLeveltwo.SelectByText(skilllLevelValue);
             IWebElement update = driver.FindElement(By.XPath("//input[@placeholder=\"Add Skill\"]/ancestor::table//input[@value=\"Update\"]"));
             update.Click();
             Thread.Sleep(2000);
@@ -74,54 +75,33 @@ namespace qa_automation_mars.Pages
 
         public string removeSuccessMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement errorMessage = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'has been deleted')]")
-            ));
-            return errorMessage.Text;
+            string errorMessage = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'has been deleted')]");
+            return errorMessage;
         }
 
         public string duplicateDataMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement duplicateDataMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'Duplicated data')]")
-            ));
-            return duplicateDataMsg.Text;
+            string duplicateDataMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'Duplicated data')]");
+            return duplicateDataMsg;
         }
 
         public string skillExistErrorMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement skillExistErrorMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'This skill is already exist in your skill list.')]")
-            ));
-            return skillExistErrorMsg.Text;
+            string skillExistErrorMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'This skill is already exist in your skill list.')]");
+            return skillExistErrorMsg;
         }
 
         public string emptySkillErrorMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement emptySkillErrorMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'Please enter skill and experience level')]")
-            ));
-            return emptySkillErrorMsg.Text;
+            string emptySkillErrorMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'Please enter skill and experience level')]");
+            return emptySkillErrorMsg;
         }
 
         public string emptySkillLevelErrorMsg(IWebDriver driver)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement emptySkillLevelErrorMsg = wait.Until(ExpectedConditions.ElementIsVisible(
-                By.XPath("//div[contains(text(), 'Please enter skill and experience level')]")
-            ));
-            return emptySkillLevelErrorMsg.Text;
+            string emptySkillLevelErrorMsg = Wait.waitToBeVisible(driver, 5, "//div[contains(text(), 'Please enter skill and experience level')]");
+            return emptySkillLevelErrorMsg;
         }
-
-        //public int addNewButtonPresent(IWebDriver driver)
-        //{
-            //var addNewButtonPresent = driver.FindElements(By.XPath("//th[text()='Language']/ancestor::table//div[text()='Add New']"));
-           // return addNewButtonPresent.Count;
-        //}
-    
+                 
     }
 }

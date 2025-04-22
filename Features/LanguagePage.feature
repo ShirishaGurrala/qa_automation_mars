@@ -16,11 +16,11 @@ Examples:
 
 Scenario: Edit an existing language
 Given I logged into mars application successfully '<email>' and '<password>'
-When I update an existing language '<languageValue>' and '<levelValue>'
+When I update an existing language '<languageValue>' and '<levelValue>' and '<languageValueOne>'
 Then The updated language with modified data should be successfully updated '<languageValue>'
 Examples: 
-| email            | password | languageValue | levelValue |
-| ShirishaG.@g.com | 123456   | Spanish       | Basic      |
+| email            | password | languageValue | levelValue | languageValueOne |
+| ShirishaG.@g.com | 123456   | Spanish       | Basic      | Chinese          |
 
 Scenario: Delete an existing language
 Given I logged into mars application successfully '<email>' and '<password>'

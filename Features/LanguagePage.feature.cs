@@ -129,8 +129,8 @@ await testRunner.ThenAsync(string.Format("New language should be successfully cr
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Edit an existing language")]
-        [NUnit.Framework.TestCaseAttribute("ShirishaG.@g.com", "123456", "Spanish", "Basic", null)]
-        public async System.Threading.Tasks.Task EditAnExistingLanguage(string email, string password, string languageValue, string levelValue, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("ShirishaG.@g.com", "123456", "Spanish", "Basic", "Chinese", null)]
+        public async System.Threading.Tasks.Task EditAnExistingLanguage(string email, string password, string languageValue, string levelValue, string languageValueOne, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -138,6 +138,7 @@ await testRunner.ThenAsync(string.Format("New language should be successfully cr
             argumentsOfScenario.Add("password", password);
             argumentsOfScenario.Add("languageValue", languageValue);
             argumentsOfScenario.Add("levelValue", levelValue);
+            argumentsOfScenario.Add("languageValueOne", languageValueOne);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Edit an existing language", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
@@ -153,7 +154,7 @@ this.ScenarioInitialize(scenarioInfo);
 await testRunner.GivenAsync(string.Format("I logged into mars application successfully \'{0}\' and \'{1}\'", email, password), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 19
-await testRunner.WhenAsync(string.Format("I update an existing language \'{0}\' and \'{1}\'", languageValue, levelValue), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+await testRunner.WhenAsync(string.Format("I update an existing language \'{0}\' and \'{1}\' and \'{2}\'", languageValue, levelValue, languageValueOne), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 20
 await testRunner.ThenAsync(string.Format("The updated language with modified data should be successfully updated \'{0}\'", languageValue), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
