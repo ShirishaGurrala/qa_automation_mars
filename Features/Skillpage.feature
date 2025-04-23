@@ -16,11 +16,11 @@ Examples:
 
 Scenario: Edit an existing skill
 Given I logged into mars application successfully '<email>' and '<password>' and navigated to Skills page
-When I update an existing skill '<skillValue>' and '<skilllLevelValue>'
+When I update an existing skill '<skillValue>' and '<skilllLevelValue>' and '<skillValueOne>'
 Then The updated skill with modified data should be successfully updated '<skillValue>'
 Examples: 
-| email            | password | skillValue | skilllLevelValue |
-| ShirishaG.@g.com | 123456   | Automation Testing       | Expert      |
+| email            | password | skillValue         | skilllLevelValue | skillValueOne       |
+| ShirishaG.@g.com | 123456   | Automation Testing | Expert           | Exploratory Testing |
 
 Scenario: Delete an existing skill
 Given I logged into mars application successfully '<email>' and '<password>' and navigated to Skills page

@@ -25,6 +25,7 @@ namespace qa_automation_mars.StepDefinition
         public void WhenIAddANewSkillAnd(string skillValue, string skilllLevelValue)
         {
             Skills skills = new Skills();
+            skills.clearData(driver);
             skills.addSkills(driver, skillValue, skilllLevelValue);
         }
 
@@ -37,10 +38,12 @@ namespace qa_automation_mars.StepDefinition
             Assert.That(lastSkillValue == skillValue, "Actual and excepted skill doesn't match");
         }
 
-        [When("I update an existing skill {string} and {string}")]
-        public void WhenIUpdateAnExistingSkillAnd(string skillValue, string skilllLevelValue)
+        [When("I update an existing skill {string} and {string} and {string}")]
+        public void WhenIUpdateAnExistingSkillAnd(string skillValue, string skilllLevelValue, string skillValueOne)
         {
             Skills skills = new Skills();
+            skills.clearData(driver);
+            skills.addSkills(driver, skillValueOne, skilllLevelValue);
             skills.editSkill(driver, skillValue, skilllLevelValue);
         }
 

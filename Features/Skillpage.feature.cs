@@ -130,8 +130,8 @@ await testRunner.ThenAsync(string.Format("New skill should be successfully creat
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Edit an existing skill")]
-        [NUnit.Framework.TestCaseAttribute("ShirishaG.@g.com", "123456", "Automation Testing", "Expert", null)]
-        public async System.Threading.Tasks.Task EditAnExistingSkill(string email, string password, string skillValue, string skilllLevelValue, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("ShirishaG.@g.com", "123456", "Automation Testing", "Expert", "Exploratory Testing", null)]
+        public async System.Threading.Tasks.Task EditAnExistingSkill(string email, string password, string skillValue, string skilllLevelValue, string skillValueOne, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -139,6 +139,7 @@ await testRunner.ThenAsync(string.Format("New skill should be successfully creat
             argumentsOfScenario.Add("password", password);
             argumentsOfScenario.Add("skillValue", skillValue);
             argumentsOfScenario.Add("skilllLevelValue", skilllLevelValue);
+            argumentsOfScenario.Add("skillValueOne", skillValueOne);
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Edit an existing skill", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
@@ -155,7 +156,7 @@ await testRunner.GivenAsync(string.Format("I logged into mars application succes
                             "ls page", email, password), ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 19
-await testRunner.WhenAsync(string.Format("I update an existing skill \'{0}\' and \'{1}\'", skillValue, skilllLevelValue), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+await testRunner.WhenAsync(string.Format("I update an existing skill \'{0}\' and \'{1}\' and \'{2}\'", skillValue, skilllLevelValue, skillValueOne), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 20
 await testRunner.ThenAsync(string.Format("The updated skill with modified data should be successfully updated \'{0}\'", skillValue), ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
